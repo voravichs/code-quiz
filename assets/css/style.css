@@ -43,30 +43,32 @@ main {
     margin-bottom: 30px;
 }
 
-.instructions {
+.text-content {
     margin-bottom: 30px;
+    text-align: center;
 }
 
-.choice-buttons button{
+button{
     width: auto;
     margin-bottom: 15px;
     padding: 10px;
     background-color: blueviolet;
     color:antiquewhite;
 
-    display: block;
 }
 
 .start-button {
     font-size: 40px;
     margin-inline: auto;
     border-radius: 5px;
+    display: block;
 }
 
 .multi-button {
     font-size: 30px;
     margin-left: 5vw;
     border-radius: 5px 20px 20px 5px;
+    display: none;
 }
 
 
