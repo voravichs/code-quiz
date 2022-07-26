@@ -5,8 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
     <title>Code Quiz Highscores</title>
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 <body>
-    <div>omgwtfbbq</div>
+    <h1 class="center-align"> Highscores</h1>
+    <ul class="center-align high-scores">
+        <li class="high-score-card">VS: 69</li>
+        <li class="high-score-card">VS: 69</li>
+        <li class="high-score-card">VS: 69</li>
+        <li class="high-score-card">VS: 69</li>
+    </ul>
+    <div class="center-align"> 
+        <button id="return-btn"> 
+            <a href="index.html">Return</a>
+        </button>
+        <button id="clear-scores"> Clear Scores</button>    
+    </div>
+    
+    <!-- Links to External JS Scripts-->
+    <script>
+        var highScoreEl = document.querySelector(".high-scores");
+        var clearScoreEl = document.querySelector("#clear-scores");
+        
+        function addHighScore() {
+            var highScore = document.createElement('p');
+            highScore.textContent =
+                localStorage.getItem('initials') + ": " +
+                localStorage.getItem('score');
+            highScore.setAttribute('class', "high-score-card");
+            highScoreEl.appendChild(highScore);
+        }
+        
+        clearScoreEl.addEventListener('click', function() {
+            document.body.children[1].innerHTML = "";
+        })
+    </script>
 </body>
 </html>

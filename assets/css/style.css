@@ -37,14 +37,16 @@ main {
 
 .center-align {
     text-align: center;
+    justify-content: center;
 }
 
 .title {
     margin-bottom: 30px;
+    display: block;
 }
 
 .text-content {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     text-align: center;
 }
 
@@ -64,6 +66,10 @@ button{
     display: block;
 }
 
+.choice-buttons {
+    margin-block: 3vh;
+}
+
 .multi-button {
     font-size: 30px;
     margin-left: 3vw;
@@ -71,4 +77,56 @@ button{
     display: none;
 }
 
+.quiz-feedback {
+    border-top: 2px solid gray;
+    padding: 10px;
+    font-style: italic;
+    font-size: 40px;
+    color: gray;
+}
 
+.hidden {
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.input-group {
+    display: none;
+}
+
+.input-group label {
+    font-size: 20px;
+}
+
+.input-group input {
+    height: 40px;
+    padding: 5px;
+    margin: 5px;
+}
+
+.input-group button {
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.input-group a {
+    color: antiquewhite;
+}
+
+/* Highscore CSS */
+.high-scores {
+    margin-block: 2.5vh;
+    margin-inline: 30vw;
+}
+
+.high-score-card {
+    background-color: rgb(171, 117, 221);
+    color: antiquewhite;
+    font-size: 30px;
+    padding: 15px;
+    margin: 15px;
+}
+
+#return-btn a {
+    color: antiquewhite;
+}
