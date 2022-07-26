@@ -5,14 +5,14 @@ var textEl = document.querySelector('.text-content');
 var startButtonEl = document.querySelector('.start-button');
 var multiButtonEl = document.querySelector('.multi-button');
 var choiceButtonsEl = document.querySelector('.choice-buttons');
-var buttonAEl = document.querySelector('#button-a');
-var buttonBEl = document.querySelector('#button-b');
-var buttonCEl = document.querySelector('#button-c');
-var buttonDEl = document.querySelector('#button-d');
-var answerAEl = document.querySelector('#answer-a');
-var answerBEl = document.querySelector('#answer-b');
-var answerCEl = document.querySelector('#answer-c');
-var answerDEl = document.querySelector('#answer-d');
+var button1El = document.querySelector('#button-1');
+var button2El = document.querySelector('#button-2');
+var button3El = document.querySelector('#button-3');
+var button4El = document.querySelector('#button-4');
+var answer1El = document.querySelector('#answer-1');
+var answer2El = document.querySelector('#answer-2');
+var answer3El = document.querySelector('#answer-3');
+var answer4El = document.querySelector('#answer-4');
 
 
 questions = 
@@ -27,27 +27,26 @@ answers =
     ["E","F","G","H"],
     ["E","F","G","H"],
     ["E","F","G","H"]];
-correctAnswers = ["E","E","E","E","E"];
 var questionOrder = [0,1,2,3,4];
 var answerOrder = [0,1,2,3];
-currentQuestion = 0;
-seconds = 0;
+var currentQuestion = 0;
+var seconds = 0;
 
 
 // When you click the start button, start the game
 startButtonEl.addEventListener('click', function () {
   
     // Initialize Variables, randomize question order
-    seconds = 5;
+    seconds = 90;
     shuffle(questionOrder);
 
     // remove the start button and title, display multiple choice, show a new question
     titleEl.setAttribute("style","display: none");
     startButtonEl.setAttribute("style","display: none");
-    buttonAEl.setAttribute("style","display: block");
-    buttonBEl.setAttribute("style","display: block");
-    buttonCEl.setAttribute("style","display: block");
-    buttonDEl.setAttribute("style","display: block");
+    button1El.setAttribute("style","display: block");
+    button2El.setAttribute("style","display: block");
+    button3El.setAttribute("style","display: block");
+    button4El.setAttribute("style","display: block");
     newQuestion();
 
     // set text of timer to starting value
@@ -60,23 +59,32 @@ startButtonEl.addEventListener('click', function () {
   
       // game over if seconds = 0
       if (seconds == 0) {
-        gameOver();
+        endGame();
       }
     }, 1000);
 });
 
 function newQuestion() {
-    currentQuestion++;
+    if (currentQuestion > questions.length-1) {
+        endGame();
+    }
     answerOrder = [0,1,2,3];
     shuffle(answerOrder);
+    // Set text of current question
     textEl.textContent = questions[questionOrder[currentQuestion]];
-    answerAEl.textContent = answers[questionOrder[currentQuestion]][answerOrder[0]];
-    answerBEl.textContent = answers[questionOrder[currentQuestion]][answerOrder[1]];
-    answerCEl.textContent = answers[questionOrder[currentQuestion]][answerOrder[2]];
-    answerDEl.textContent = answers[questionOrder[currentQuestion]][answerOrder[3]];
+
+    // Set answers of current question, if the randomized index of current question is 0, then set it as the correct answer
+    for (var i = 0; i < answerOrder.length; i++) {
+        var currentButton = eval("button" + (i+1) + "El");
+        var currentAnswer = eval("answer" + (i+1) + "El");
+        if (answerOrder[i] === 0) {
+            currentButton.setAttribute("answer","right");
+        }
+        currentAnswer.textContent = answers[questionOrder[currentQuestion]][answerOrder[i]];
+    }
 }
 
-function gameOver() {
+function endGame() {
     clearInterval(countdown);
     seconds = 0;
     currentQuestion = 0;
@@ -97,13 +105,22 @@ function shuffle(array){
 }
 
 
-/*choiceButtonsEl.addEventListener('click', function(event) {
+choiceButtonsEl.addEventListener('click', function(event) {
     let clickedButton = event.target;
+    // Find the button if span is clicked
+    clickedButton = clickedButton.closest('button');
 
-    if (clicked.matched("multi-button")) {
-
-    }
-});*/
+    if (clickedButton.matches("button")) {
+        var chosenAnswer = clickedButton.getAttribute("answer");
+        console.log(chosenAnswer);
+        
+        if (chosenAnswer === "right") {
+            clickedButton.setAttribute('answer','wrong');
+            currentQuestion++;
+            newQuestion();
+        }
+    } 
+});
 
 // initialize starting variables
 //      set the initial starting seconds
