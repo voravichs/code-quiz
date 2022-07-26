@@ -1,0 +1,72 @@
+body {
+    margin-top: 5vh;
+    margin-inline: 5vw;
+}
+header {
+    padding: 10px;
+    height: 10vh;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+p {
+    font-size: 25px;
+}
+
+a {
+    text-decoration: none;
+}
+
+main {
+    margin-inline: 20vw;
+}
+
+.highscores-head {
+    float: left;
+}
+
+.timer-head {
+    float: right;
+}
+
+.center-align {
+    text-align: center;
+}
+
+.title {
+    margin-bottom: 30px;
+}
+
+.instructions {
+    margin-bottom: 30px;
+}
+
+.choice-buttons button{
+    width: auto;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: blueviolet;
+    color:antiquewhite;
+
+    display: block;
+}
+
+.start-button {
+    font-size: 40px;
+    margin-inline: auto;
+    border-radius: 5px;
+}
+
+.multi-button {
+    font-size: 30px;
+    margin-left: 5vw;
+    border-radius: 5px 20px 20px 5px;
+}
+
+
