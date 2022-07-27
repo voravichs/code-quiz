@@ -29,7 +29,7 @@
         var clearScoreEl = document.querySelector("#clear-scores");
         
         function addHighScore() {
-            var highScore = document.createElement('p');
+            var highScore = document.createElement('li');
             highScore.textContent =
                 localStorage.getItem('initials') + ": " +
                 localStorage.getItem('score');
@@ -40,6 +40,8 @@
         clearScoreEl.addEventListener('click', function() {
             document.body.children[1].innerHTML = "";
         })
+
+        addHighScore();
     </script>
 </body>
 </html>
