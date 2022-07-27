@@ -10,18 +10,24 @@ var inputEl = document.querySelector(".input-group");
 var submitBtnEl = document.querySelector("#submit-btn");
 
 questions = 
-    ["AAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-    "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
-    "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
-    "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
-    "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"];
+    ["Which one of these does NOT belong in the CSS Box Model?",
+    "John has an index.html file and a style.css file in the same directory. What line should he put in the head so that his styles will show up in the html?",
+    "An event handler targets a button instead of a whole section, despite being declared in that whole section. What concept does this situation illustrate?",
+    "In which language do you call a variable by typing \n \"var: --[variableName]\"?",
+    "Consider the following line of javascript code:" +
+    "\n document.body.children(2).children(0)." +
+    "\n What relationship does this element have with <body>, assuming that this element is singular in nature?",
+    "Which of the following illustrates what a pseudoclass can do in CSS?"];
+
 answers =  
-    [["E","F","G","H"],
-    ["E","F","G","H"],
-    ["E","F","G","H"],
-    ["E","F","G","H"],
-    ["E","F","G","H"]];
-var questionOrder = [0,1,2,3,4];
+    [["Spacing","Margin","Border","Content"],
+    ["<link rel=\"stylesheet\" href=\"style.css\" />","<link rel=\"stylesheet\" href=\"./assets/css/style.css\" />","<a href=\"style.css\">Style</a>","<script src= \"style.css\"></script>"],
+    ["Event Delegation","Bubbling","Capturing","Targeting"],
+    ["CSS","Javascript","HTML","JQuery"],
+    ["It is the 1st child of the 3rd child of <body>","It is the 1st child of the 2nd child of <body>","It is the 0th child of the 2nd child of <body>","It is none of these."],
+    ["It can change a CSS property when a user hovers over the object.", "It can add differently styled text in a heading, either before or after it.", "It can change the background color of a page when a user clicks a button.", "It can animate an image by changing the attributes of an element."]];
+
+var questionOrder = [0,1,2,3,4,5];
 var answerOrder = [0,1,2,3];
 var correctAnswer = 0;
 var currentQuestion = 0;
@@ -32,7 +38,7 @@ var seconds = 0;
 startButtonEl.addEventListener('click', function () {
   
     // Initialize Variables, randomize question order
-    seconds = 90;
+    seconds = 120;
     shuffle(questionOrder);
 
     // remove the start button and title, display multiple choice, show a new question
