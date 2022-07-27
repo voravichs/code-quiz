@@ -16,19 +16,19 @@ A problem arose then: local storage only persists between pages when a page is d
 
 * Front Page
 
-![the front page of code quiz, with instructions and a start button](./assets/images/screen1.PNG)
+![the front page of code quiz, with instructions and a start button](./assets/images/screen1.png)
 
 * Multiple Choice Question
 
-![a multiple choice question](./assets/images/screen2.PNG)
+![a multiple choice question](./assets/images/screen2.png)
 
 * Results Page
 
-![a results page showing a score and prompting users' initials](./assets/images/screen3.PNG)
+![a results page showing a score and prompting users' initials](./assets/images/screen3.png)
 
 * High Score Page
 
-![a page with 3 initials followed by their scores](./assets/images/screen4.PNG)
+![a page with 3 initials followed by their scores](./assets/images/screen4.png)
 
 ## Credits
 
