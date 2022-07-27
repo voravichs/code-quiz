@@ -163,8 +163,7 @@ submitBtnEl.addEventListener('click', function (event) {
     if (initials == '') {
         showFeedback("Please enter initials to save highscore.");
     } else {
-        localStorage.setItem('initials',initials);
-        localStorage.setItem('score',seconds);
+        localStorage.setItem('newHighScore', 'initials' + ': ' + 'score');
     }  
 })
 

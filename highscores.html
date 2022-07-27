@@ -10,12 +10,7 @@
 </head>
 <body>
     <h1 class="center-align"> Highscores</h1>
-    <ul class="center-align high-scores">
-        <li class="high-score-card">VS: 69</li>
-        <li class="high-score-card">VS: 69</li>
-        <li class="high-score-card">VS: 69</li>
-        <li class="high-score-card">VS: 69</li>
-    </ul>
+    <ul class="center-align high-scores"></ul>
     <div class="center-align"> 
         <button id="return-btn"> 
             <a href="index.html">Return</a>
@@ -27,21 +22,59 @@
     <script>
         var highScoreEl = document.querySelector(".high-scores");
         var clearScoreEl = document.querySelector("#clear-scores");
+
+        var highScoreList = [];
         
+        function renderHighScores() {
+           // Clear highscore list initially
+           highScoreEl.innerHTML = "";
+           
+           // Make new li elements for each score
+           for (var i = 0; i < highScoreList.length; i++) {
+               var currHighScore = document.createElement('li');
+               currHighScore.textContent = highScoreList[i];
+               currHighScore.setAttribute('class', "high-score-card");
+               highScoreEl.appendChild(currHighScore);
+           }
+            
+        }
+
         function addHighScore() {
-            var highScore = document.createElement('li');
-            highScore.textContent =
-                localStorage.getItem('initials') + ": " +
-                localStorage.getItem('score');
-            highScore.setAttribute('class', "high-score-card");
-            highScoreEl.appendChild(highScore);
+            // Get the new high score
+            var newScore = localStorage.getItem("newHighScore");
+
+            // If there is a new high score, rather than the user just checking the
+            // high score page, then add the new high score to the list, update local storage,
+            // then remove the new score from local storage
+            if (newScore !== "") {
+                highScoreList.push(newScore);
+                localStorage.setItem("highScoreList", JSON.stringify(highScoreList));
+                localStorage.setItem("newHighScore", "");
+            }
+        }
+
+        function init() {
+            // get previous stored scores
+            var storedScores = JSON.parse(localStorage.getItem("highScoreList"));
+
+            // if there are previous stored scores, update the high score list with them
+            if (storedScores !== null) {
+                highScoreList = storedScores;
+            }
+
+            // Add new high scores from local storage
+            addHighScore();
+
+            // render the current list of high scores
+            renderHighScores();
         }
         
         clearScoreEl.addEventListener('click', function() {
             document.body.children[1].innerHTML = "";
         })
 
-        addHighScore();
+        // initialize the list of high scores stored in local storage
+        init();
     </script>
 </body>
 </html>
