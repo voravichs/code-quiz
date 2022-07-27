@@ -71,6 +71,8 @@
         
         clearScoreEl.addEventListener('click', function() {
             document.body.children[1].innerHTML = "";
+            localStorage.clear();
+            highScoreList = [];
         })
 
         // initialize the list of high scores stored in local storage

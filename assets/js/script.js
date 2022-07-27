@@ -64,7 +64,7 @@ function newQuestion() {
         return;
     }
     shuffle(answerOrder);
-    // Set text of current question
+    // Set text of current question 
     textEl.textContent = questions[questionOrder[currentQuestion]];
 
     // Set answers of current question, if the randomized index of current question is 0, then set it as the correct answer
@@ -133,9 +133,18 @@ choiceButtonsEl.addEventListener('click', function(event) {
             newQuestion();
         } else if (chosenAnswer === "wrong"){
             correctAnswer.setAttribute('answer','wrong');
-            currentQuestion++;
-            showFeedback("Wrong!");
-            newQuestion();
+            seconds = seconds - 30;
+            if (seconds <= 0) {
+                seconds = 0;
+                timerEl.textContent = seconds;
+                endGame();
+                return;
+            } else {
+                timerEl.textContent = seconds;
+                currentQuestion++;
+                showFeedback("Wrong!");
+                newQuestion();
+            }
         }
     } 
 })
@@ -148,7 +157,7 @@ function showFeedback(string) {
     feedbackEl.setAttribute("style","opacity: 1");
 
     // then, after 1 second, set it back to 0
-    var feedbackSeconds = 10;
+    var feedbackSeconds = 6;
     feedbackTimer = setInterval(function () {
         feedbackSeconds--;
         if (feedbackSeconds === 0) {
@@ -163,7 +172,7 @@ submitBtnEl.addEventListener('click', function (event) {
     if (initials == '') {
         showFeedback("Please enter initials to save highscore.");
     } else {
-        localStorage.setItem('newHighScore', 'initials' + ': ' + 'score');
+        localStorage.setItem('newHighScore', initials + ': ' + seconds);
     }  
 })
 
