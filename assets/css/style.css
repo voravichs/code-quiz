@@ -1,6 +1,7 @@
 body {
     margin-top: 5vh;
     margin-inline: 5vw;
+    line-height: 40px;
 }
 header {
     padding: 10px;
